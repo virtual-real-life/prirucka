@@ -5,8 +5,30 @@
 \author{TheAshenWolf}
 \date{Únor 2021}
 
+\usepackage{xcolor}
 \usepackage{natbib}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{caption}
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+  \parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\lstset{frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
 \begin{document}
 
@@ -51,7 +73,20 @@ Jak jsem již zmínil, potřebuješ Unity verze 2019. V novém projektu si otev�
 
 Nyní budeš muset zapnout podporu VR.
 
-Project settings $>$ Player $>$ Other $>$ Enable Xr
+\begin{lstlisting}
+Project settings > Player > Other > Enable Xr
+\end{lstlisting}
+
+Následně do scény vlož VrRig. Najdeš ho v 
+\begin{lstlisting}
+Plugins > com.vrlife.vr > Runtime > Prefabs
+\end{lstlisting}
+
+Pokud chceš nastavit ovladače, rozklikni si vložený VrRig. Najdeš v něm LSphere a RSphere. Tyto dva objekty označují ovladače. LSphere je levý ovladaš, RSphere je pravý. V každém z nich je [todo] proxy. V těchto proxy se nachází položka views. Právě tohle je místo, kde nastavuješ ovládání.
+
+Pro nastavení tlačítek využiješ horní část eventu. Vybereš si tlačítko a vložíš event který chceš. Například když vložíš Grabber (měl by být na L/RSphere), můžeš nastavit tlačítko na chycení předmětu.
+
+Pro nastavení Joysticku využiješ druhou část. Vybereš Joystick místo tlačítka a v dolní části zvolíš, co se má dít. Pro pohyb přesuň do zdroje samotný VrRig. Pod [todo] movement proxy dostaneš nabídku na Horizontal a Vertical movement.
 
 \pagebreak
 
