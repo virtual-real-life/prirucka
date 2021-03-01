@@ -79,26 +79,59 @@ Project settings > Player > Other > Enable Xr
 
 Následně do scény vlož VrRig. Najdeš ho v 
 \begin{lstlisting}
-Plugins > com.vrlife.vr > Runtime > Prefabs
+Packages > VRL - VR Package > Runtime > Prefabs
 \end{lstlisting}
+Můžeš použít jak VrRig (ten má ruce), tak VrRig-Controllers (ten má ovladače od Oculus Quest).
 
-Pokud chceš nastavit ovladače, rozklikni si vložený VrRig. Najdeš v něm LSphere a RSphere. Tyto dva objekty označují ovladače. LSphere je levý ovladaš, RSphere je pravý. V každém z nich je [todo] proxy. V těchto proxy se nachází položka views. Právě tohle je místo, kde nastavuješ ovládání.
+Pokud chceš nastavit ovladače, rozklikni si vložený VrRig. Najdeš v něm LSphere a RSphere. Tyto dva objekty označují ovladače. LSphere je levý ovladaš, RSphere je pravý. V každém z nich je Player Hand Controller Proxy. V těchto proxy se nachází položka views. Právě tohle je místo, kde nastavuješ ovládání.
 
 Pro nastavení tlačítek využiješ horní část eventu. Vybereš si tlačítko a vložíš event který chceš. Například když vložíš Grabber (měl by být na L/RSphere), můžeš nastavit tlačítko na chycení předmětu.
 
-Pro nastavení Joysticku využiješ druhou část. Vybereš Joystick místo tlačítka a v dolní části zvolíš, co se má dít. Pro pohyb přesuň do zdroje samotný VrRig. Pod [todo] movement proxy dostaneš nabídku na Horizontal a Vertical movement.
+Pro nastavení Joysticku využiješ druhou část. Vybereš Joystick místo tlačítka a v dolní části zvolíš, co se má dít. Pro pohyb přesuň do zdroje samotný VrRig. Pod Vr Rig Controller Proxy dostaneš nabídku na Horizontal a Vertical movement.
 
 Nezapomeň také ze scény odstranit defaultní Main cameru. Jinak si s VR moc neužiješ a uvidíš pořád ten samý obraz. VrRig obsahuje kameru, která je ovládaná headsetem. Pro správné pozicování by měl VrRig být položen na zemi.
+
+Pokud ti VR rig bude křičet, že nemá Pointer, nalezneš ho v
+\begin{lstlisting}
+Vr Rig > RSphere > Controller
+\end{lstlisting}
+
+\subsection{Odin}
+V našem balíčku také najdeš Sirenix Odin. Jedná se o perfektní plugin, který zlepšuje přehlednost editoru. Pokud ho máš koupený, přidávej si ho z Asset storu. Pokud ne, budeš si ho muset exportovat z již existujících projektů. Najdeš ho pod
+\begin{lstlisting}
+Assets > Plugins > Sirenix
+\end{lstlisting}
+
+\subsection{Zenject (Extenject)}
+Další plugin, který naše knihovny vyžadují. Tento plugin je zdarma dostupný na asset store. Hledej Extenject; jedná se o novou verzi Zenjectu. Slouží pro dependency injection.
+Nezapomeň, že pro použití Zenjectu ve scéně do ní musíš vložit Scene Context.
+\begin{lstlisting}
+(Hierarchie) Create > Zenject > Scene Context
+\end{lstlisting}
+Do Scene Contextu následně musíš přidat Xr Controlls Installer (kterému povolíš VR Input a přiřadíš Xr Settings) a Dummy Installer (Já vím... to jméno člověku moc neřekne. Ale já tento skript nepsal. To byl kolega předemnou). Následně tyto dva přidané skripty přesuň do položky "Mono Installers" ve Scene Context.
+
+Pokud potřebuješ vložit něco do celého projektu, budeš muset ještě přidat Project Context. Pokud ještě neexistuje, vytvoř si složku Resources. Do této složky pak vlož Project Context.
+\begin{lstlisting}
+(Assets) Create > Zenject > Project Context
+\end{lstlisting}
+
+\subsection{Newtonsoft JSON}
+Poslední položkou je Newtonsoft JSON. Když si dáš v asset store vyhledat "Newtonsoft JSON", objeví se ti tři pluginy; tebe zajímá "JSON .NET for Unity". Stejně jako Extenject je zdarma.
 
 \pagebreak
 
 \section{Nahrání aplikace na AppStore}
+Nejprve budeš muset buildnout aplikaci. Nezbyde ti nic jiného, než se přesunout k Mac booku a načíst si projekt. Mimochodem, připrav si další práci. Tohle bude trvat.
 \pagebreak
 
 \section{Nahrání aplikace na Google Play}
 \pagebreak
 
 \section{Build na Oculus Quest z Unity3D}
+\pagebreak
+
+\section{Build VrVitalis a VrTesting webů}
+Oba dva weby jsou téměř identické, takže ti popíšu, jak sestavit jeden, protože u druhého se jedná o stejný postup.
 \pagebreak
 
 \end{document}
