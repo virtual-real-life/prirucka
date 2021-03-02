@@ -149,6 +149,21 @@ Nejprve budeš muset buildnout aplikaci. Nezbyde ti nic jiného, než se přesun
 \pagebreak
 
 \section{Nahrání aplikace na Google Play}
+Je zde vícero kroků skrz Unity až do samotné produkce. Důležité je se nejprve přepnout na Android platformu v Build settings.
+\subsection{Build pro Google Play}
+Je nutné nastavit spoustu věcí. Je dobré, aby aplikace již měla ikonu, správně nastavenou firmu a tak dále.
+Následně musíš v 
+\begin{lstlisting}
+Project settings > Player > Other
+\end{lstlisting}
+nastavit "Scripting Background" na IL2CPP a povolit ARM64.
+V build settings pak nastavíš "Build APP Bundle (Google Play).
+Následně klikneš build (ne build and run!). Jakmile se vše dokončí, budeš mít soubor.aab.
+\subsection{Nahrání na Google Play}
+Otevři si konzoli Google play. Pravděpodobně budeš na přehledu všech aplikací. Pokud ne, přesuň se tam. Talčítko naješ v menu úplně nahoře. Následně si vyber aplikaci, kterou chceš aktualizovat.
+Nyní jsi na dashboardu. Vpravo, přibližně uprostřed, se ti objeví tlačítko Production. Je u něj symbol rakety. Tam se přesuň a vpravo nahoře budeš mít tlačítko "Create new release". Zde nahraješ .aab a vyplníš release notes.
+Až je vše hotové, klikneš na "Save" a následně "Review Release". Pokud jsi se vším spokojený/a, klikni na tlačítko publish. Následně počkáš pár dní, než Google schválí změny. Měl by ti přijít e-mail o tom, že je vše v pořádku a aplikaci nyní nalezneš na Google Play. Důležité je vědět, že i když je už aplikace venku, může trvat až dva dny, ne se objeví v Google Play obchodě. Většinou to ale bývá do pár hodin.
+
 \pagebreak
 
 \section{Build na Oculus Quest z Unity3D}
