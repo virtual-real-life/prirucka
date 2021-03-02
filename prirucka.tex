@@ -1,15 +1,38 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-
-\title{Příručka Nástupce}
-\author{TheAshenWolf}
-\date{Únor 2021}
-
 \usepackage{xcolor}
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{caption}
+\usepackage{titling}
+\usepackage{dblfloatfix}
+
+% set up \maketitle to accept a new item
+\postdate{
+    \begin{center}
+    \vspace{5in}
+    \placetitlepicture
+    \large
+    \par
+    \end{center}
+}
+
+% commands for including the picture
+\newcommand{\titlepicture}[2][]{%
+    \renewcommand\placetitlepicture{%
+        \includegraphics[#1]{#2}\par\medskip
+  }%
+}
+
+\newcommand{
+    \placetitlepicture
+}{} % initialization
+
+\title{Příručka Nástupce}
+\author{TheAshenWolf}
+\date{Únor 2021}
+\titlepicture[width=1in]{vrl.png}
 
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{%
@@ -32,7 +55,8 @@
 
 \begin{document}
 
-\maketitle
+\clearpage\maketitle
+\thispagestyle{empty}
 
 \pagebreak
 
