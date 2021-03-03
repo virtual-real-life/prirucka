@@ -55,7 +55,8 @@
 
 \begin{document}
 
-\clearpage\maketitle
+\clearpage
+\maketitle
 \thispagestyle{empty}
 
 \pagebreak
@@ -66,7 +67,7 @@
 \pagebreak
 
 \section{Úvodní slovo}
-Ahoj. Možná jsme se setkali, možná ne. Co je důležité je to, že jsem byl programátorem před tebou. Je zde spousta triků a tipů, na které jsem si já musel přijít sám. Ty však nemusíš. Tato příručka ti poradí alespoň s něčím, s čím se setkáš. Přeji hodně štěstí v práci.
+Ahoj. Možná jsme se setkali, možná ne. Co je důležité je to, že jsem byl programátorem před tebou. Je zde spousta triků a tipů, na které jsem si já musel přijít sám. Ty však nemusíš. Tato příručka ti poradí alespoň s něčím, s čím se setkáš. Jelikož nemohu vědět, jestli jsi junior a děláš v Unity měsíc (jako já když jsem nastoupil), nebo jsi senior, co za sebou má již několik let zkušeností, pokusím se vše napsat tak, aby ti stačily základní znalosti. Přeji hodně štěstí v práci.
 \pagebreak
 
 \section{Cloud a pluginy}
@@ -82,14 +83,28 @@ Pro tebe je důležité se stát členem virtual-real-life organizace, abys mohl
 Na GitHubu také nalezneš zdrojový kód této příručky. Možná také nalezneš něco, co by se hodilo přidat.
 Stačí základní znalost LaTeXu a můžeš přidat své vlastní kapitoly.
 
+Doporučuji ti také si najít Git LFS. Jedná se o přídavek ke gitu, který ti dovolí nahrávat velké soubory. GitHub má limit 100MB na soubor, takže pro velké *.fbx nebo textury se hodí. Pokud by ti commit nešel pushnout i přesto, že máš Git LFS, musíš nejprve provést 
+\begin{lstlisting}
+$ git lfs migrate import --everything --include="*.fbx" --verbose
+\end{lstlisting}
+Pokud chceš dobré git attributes pro Unity, najdeš je zde:
+
+https://gist.github.com/nemotoo/b8a1c3a0f1225bb9231979f389fd4f3f
+
 \subsection{Unity}
-Jeden z důležitých stavebních kamenů projektů VRLIFE je UCP; Unity Core Package, a UVP; Unity VR Package. Oba je můžeš najít na GitHubu, ale jen v pluginové verzi. Samotný projekt těchto knihoven je uložen na Unity Collab.
+Jedny z důležitých stavebních kamenů projektů VRLIFE je Unity Core Package a Unity VR Package. Oba je můžeš najít na GitHubu, ale jen v pluginové verzi. Samotný projekt těchto knihoven je uložen na Unity Collab.
 
 Tvá pracovní verze Unity bude LTS 2019. Je to proto, že Unity 2020 přináší spoustu změn, které by naši knihovnu zcela odrovnaly. Proto jsme zůstali na 2019 a jsme s ní spokojení.
 
 Z Unity Collabu si stáhni projekt "Unity Core Package". Uvnitř složky Assets nalezneš složku Plugins. V této složce budou složky com.vrlife.vr a com.vrlife.core. Pokud tam nejsou, vytvoř si je. Každá z těchto složek je místo, kam má přijít daný plugin.
 
 Oba pluginy od února 2021 obsahují skript, který je automaticky aktualizuje, takže jakmile jsou správně naimportovaní, aktualizují se vždy při startu Unity. Přítomnost této verze můžeš najít uvnitř Package Manageru. Pokud je verze $\geq$ 1.0.0, jedná se o verzi s automatickým updatem. Pokud ne, doporučuji oba pluginy odinstalovat a znovu nainstalovat přidáním z GitHubu. Verze nižší než 1.0.0 se totiž nacházela na jiném GitHub účtu a proto by mohly nastat konflikty.
+
+\subsection{Chybějící pluginy}
+Je dost možné, že se budeš muset ponořit do projektu, který nemá funkční pluginy, jelikož chybí. V případě pluginu Bakery (zapékání světel, které používal můj předchůdce) ho najdeš na GitHubu v projektu LazneDarkov-VR. Jedná se o složku Editor. Jelikož samotné .dll tohoto pluginu má přes 300MB, je nemožné ho dostat na GitHub bez Git LFS. Jelikož má GitHub omezení na 1GB LFS souborů, je zde proto jenom jednou.
+
+\subsection{Chybějící videa, zvuky a obrázky}
+I videa jsou občas příliš velké. Pokud se stane, že chybí, měl/a bys je být schopný/á najít na sdíleném disku.
 \pagebreak
 
 \section{Implementace Unity VR package}
@@ -161,8 +176,10 @@ V build settings pak nastavíš "Build APP Bundle (Google Play).
 Následně klikneš build (ne build and run!). Jakmile se vše dokončí, budeš mít soubor.aab.
 \subsection{Nahrání na Google Play}
 Otevři si konzoli Google play. Pravděpodobně budeš na přehledu všech aplikací. Pokud ne, přesuň se tam. Talčítko naješ v menu úplně nahoře. Následně si vyber aplikaci, kterou chceš aktualizovat.
-Nyní jsi na dashboardu. Vpravo, přibližně uprostřed, se ti objeví tlačítko Production. Je u něj symbol rakety. Tam se přesuň a vpravo nahoře budeš mít tlačítko "Create new release". Zde nahraješ .aab a vyplníš release notes.
-Až je vše hotové, klikneš na "Save" a následně "Review Release". Pokud jsi se vším spokojený/a, klikni na tlačítko publish. Následně počkáš pár dní, než Google schválí změny. Měl by ti přijít e-mail o tom, že je vše v pořádku a aplikaci nyní nalezneš na Google Play. Důležité je vědět, že i když je už aplikace venku, může trvat až dva dny, ne se objeví v Google Play obchodě. Většinou to ale bývá do pár hodin.
+
+Nyní jsi na dashboardu. Vpravo, přibližně uprostřed, se ti objeví tlačítko Production. Je u něj symbol rakety. Tam se přesuň a vpravo nahoře budeš mít tlačítko "Create new release". Zde nahraješ .aab a vyplníš release notes. Až je vše hotové, klikneš na "Save" a následně "Review Release". 
+
+Pokud jsi se vším spokojený/a, klikni na tlačítko publish. Následně počkáš pár dní, než Google schválí změny. Měl by ti přijít e-mail o tom, že je vše v pořádku a aplikaci nyní nalezneš na Google Play. Důležité je vědět, že i když je už aplikace venku, může trvat až dva dny, ne se objeví v Google Play obchodě. Většinou to ale bývá do pár hodin.
 
 \pagebreak
 
@@ -171,6 +188,48 @@ Až je vše hotové, klikneš na "Save" a následně "Review Release". Pokud jsi
 
 \section{Build VrVitalis a VrTesting webů}
 Oba dva weby jsou téměř identické, takže ti popíšu, jak sestavit jeden, protože u druhého se jedná o stejný postup.
+\subsection{Instalace commandline balíčků}
+Pro všechny kroky ti doporučuji používat Git Cmd. Tu získáš zároveň s instalací Gitu.
+
+Jako první krok si nainstaluj Node JS. S tím se ti nainstaluje NPM, které budeš potřebovat.
+Dále budeš potřebovat TypeScript
+\begin{lstlisting}
+$ npm install -g typescript
+\end{lstlisting}
+a SCSS
+\begin{lstlisting}
+$ npm install -g sass
+\end{lstlisting}
+Pokud vše vyšlo, jsi nyní připraven/a sestavovat weby.
+\subsection{Úprava zdrojových souborů}
+Jediná složka co tě zajímá pro úpravy je složka source. V této složce jsou všechny pracovní soubory webů.
+Dělání úprav je jednoduché. Zkrátka upravíš co potřebuješ a buildneš web.Přidávání souborů je trochu složitější, ale záleží, o co se jedná. 
+
+Pokud se jedná o obrázky, přidávej je do složky Assets. Ta se kopíruje automaticky celá, takže to nemusíš řešit. 
+
+V případě přidávání nového stylového souboru ho budeš muset přidat do .sh souboru, který celý web sestavuje. Podívej se, jak je to udělané a myslím, že pochopíš.
+
+\subsection{Build a publikace}
+Samotný build vytvoříš tím, že z terminálu spustíš 
+\begin{lstlisting}
+$ ./vrvitalis.sh
+\end{lstlisting}
+nebo 
+\begin{lstlisting}
+$ ./vrtesting.sh
+\end{lstlisting}
+ze složky source, dle projektu, na kterém pracuješ. Všechny build soubory se ti nakopírují do složky build o úroveň výše.
+
+Pro nahrání webu stačí vžit celý obsah build složky a překopírovat ho do příslušné složky v FTP klientovi (Já osobně používám Filezilla). Pro Vr Vitalis a Testing se jedná o složku
+\begin{lstlisting}
+domains / vrvitalis.cz (vrtesting.cz)
+\end{lstlisting}
+
+Po zkopírování souborů si na příslušném webu ověř, že je vše správně.
+\pagebreak
+
+\section{XrCloud}
+Byl bych rád, kdybych ti mohl o tomto... projektu... povědět víc. Bohužel nemůžu. XrCloud byl stvořen mým předchůdcem. Jelikož tento člověk měl rád .NET, napsal ho celý v něm. Já osobně preferuji TypeScript, SCSS a HTML; proto jsou XrCloud a VRVitalis/VRTesting tolik odlišné. Pokud v .NET umíš, bude to pro tebe hračka. Dost možná také najdeš chyby, nebo věci co ti nebudou dávat smysl. Oprav je, prosím. Já se .NET nikdy nenaučil a proto jsou některé části "jen aby to fungovalo".
 \pagebreak
 
 \end{document}
