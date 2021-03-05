@@ -9,14 +9,8 @@
 \usepackage{dblfloatfix}
 
 % set up \maketitle to accept a new item
-\postdate{
-    \begin{center}
-    \vspace{5in}
-    \placetitlepicture
-    \large
-    \par
-    \end{center}
-}
+\predate{\centering}
+\postdate{\begin{center}\vspace{5in}\placetitlepicture\large\par\end{center}}
 
 % commands for including the picture
 \newcommand{\titlepicture}[2][]{%
@@ -50,7 +44,7 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=3,
 }
 
 \begin{document}
@@ -183,9 +177,6 @@ Pokud jsi se vším spokojený/a, klikni na tlačítko publish. Následně počk
 
 \pagebreak
 
-\section{Build na Oculus Quest z Unity3D}
-\pagebreak
-
 \section{Build VrVitalis a VrTesting webů}
 Oba dva weby jsou téměř identické, takže ti popíšu, jak sestavit jeden, protože u druhého se jedná o stejný postup.
 \subsection{Instalace commandline balíčků}
@@ -222,7 +213,7 @@ ze složky source, dle projektu, na kterém pracuješ. Všechny build soubory se
 
 Pro nahrání webu stačí vžit celý obsah build složky a překopírovat ho do příslušné složky v FTP klientovi (Já osobně používám Filezilla). Pro Vr Vitalis a Testing se jedná o složku
 \begin{lstlisting}
-domains / vrvitalis.cz (vrtesting.cz)
+www / domains / vrvitalis.cz (vrtesting.cz)
 \end{lstlisting}
 
 Po zkopírování souborů si na příslušném webu ověř, že je vše správně.
@@ -230,6 +221,19 @@ Po zkopírování souborů si na příslušném webu ověř, že je vše správn
 
 \section{XrCloud}
 Byl bych rád, kdybych ti mohl o tomto... projektu... povědět víc. Bohužel nemůžu. XrCloud byl stvořen mým předchůdcem. Jelikož tento člověk měl rád .NET, napsal ho celý v něm. Já osobně preferuji TypeScript, SCSS a HTML; proto jsou XrCloud a VRVitalis/VRTesting tolik odlišné. Pokud v .NET umíš, bude to pro tebe hračka. Dost možná také najdeš chyby, nebo věci co ti nebudou dávat smysl. Oprav je, prosím. Já se .NET nikdy nenaučil a proto jsou některé části "jen aby to fungovalo".
+
+Důležité je jen abys byl v "Debug" módu, pokud si prohlížíš změny co jsi udělal/a, a v "Release" módu, když se web snažíš publikovat.
+
+\subsection{Přidávání návodů na XrCloud}
+Od 4. 3. 2021 jsou na XrCloudu i návody. Přidání nových je snad to nejjednodušší, co na XrCloudu je. Najdi si zdrojovou složku XrCloud a následuj tuto cestu
+\begin{lstlisting}
+~ / XrCloud / wwwroot / tutorials
+\end{lstlisting}
+Do této složky přidej .pdf, ty se automaticky natáhnou na stránku. Nahrávej je v následujícím formátu:
+\begin{lstlisting}
+Titulek_navodu_ktery_pridavas.pdf
+\end{lstlisting}
+Podtržítka se nahradí mezerami a .pdf se v názvu odstraní. Kapitalizace zůstane. Diakritiku použít také můžeš, jen TeX ji neumí použít, takže zde napsaná není.
 \pagebreak
 
 \end{document}
